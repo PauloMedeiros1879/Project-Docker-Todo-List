@@ -1,5 +1,4 @@
 version: "3"
-
 services:
   todofront:
     build: ./todo-app/front-end/
@@ -10,16 +9,12 @@ services:
       - REACT_APP_API_HOST=todoback
     depends_on:
       - todoback
-    networks:
-      - todo-app
 
   todoback:
     build: ./todo-app/back-end/
     restart: always
     ports:
       - 3001:3001
-    networks:
-      - todo-app
 
   todotests:
     build: ./todo-app/tests/
@@ -29,8 +24,3 @@ services:
     depends_on:
       - todofront
       - todoback
-    networks:
-      - todo-app
-
-networks:
-  todo-app:
